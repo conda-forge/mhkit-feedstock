@@ -1,44 +1,45 @@
 {% set name = "mhkit" %}
-{% set version = "0.8.2" %}
+{% set version = "0.9.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
-  sha256: b184a7523a8b44220e073cebc6c07f93aef816c4de8618d64cf535179116e351
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
+  sha256: 546dd6928d37bd16a37a04af91417a5e09d720f5a3d585dea62499a607e4c700
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  noarch: python
+  skip: true  # [py<3.10 or py>=3.13]
 
 requirements:
   host:
-    - python >=3.8
+    - python
     - pip
+    - setuptools
   run:
-    - python >=3.8
-    - pandas >=1.0.0
-    - numpy >=1.21.0,<2.0.0
-    - scipy <=1.13.1
-    - matplotlib-base
+    - python
+    - numpy >=2.0.0
+    - pandas >=2.2.2
+    - scipy >=1.14.0
+    - xarray >=2024.6.0
+    - matplotlib-base >=3.9.1
+    - scikit-learn >=1.5.1
+    - h5py >=3.11.0
+    - h5pyd >=0.18.0
+    - netcdf4 >=1.7.1.post1
+    - statsmodels >=0.14.2
     - requests
     - pecos >=0.3.0
     - fatpack
-    - lxml
-    - scikit-learn
     - nrel-rex >=0.2.63
-    - six >=1.13.0
-    - h5py >=3.6.0
-    - h5pyd >=0.7.0
-    - netcdf4 >=1.5.8,<=1.6.5
-    - xarray
-    - statsmodels
     - pytz
-    - bottleneck
     - beautifulsoup4
+    - numexpr >=2.10.0
+    - lxml
+    - bottleneck
 
 test:
   imports:
