@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
   sha256: 546dd6928d37bd16a37a04af91417a5e09d720f5a3d585dea62499a607e4c700
 
 build:
