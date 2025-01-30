@@ -6,25 +6,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
   sha256: 546dd6928d37bd16a37a04af91417a5e09d720f5a3d585dea62499a607e4c700
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 2
-  skip: True  # [py<3.10]
 
 requirements:
   host:
     - python
     - pip
-    - setuptools
   run:
     - python
     - numpy >=2.0.0
     - pandas >=2.2.2
     - scipy >=1.14.0
-    - xarray >=2024.6.0git pu
+    - xarray >=2024.6.0
     - matplotlib-base >=3.9.1
     - scikit-learn >=1.5.1
     - h5py >=3.11.0
