@@ -12,15 +12,13 @@ source:
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 2
-  skip: True  # [py<3.10]
-
+  skip: True  # [py<310 or py>=313]
 requirements:
   host:
-    - python
-    - setuptools 
+    - python >=3.10,<3.13
     - pip
   run:
-    - python
+    - python >=3.10,<3.13
     - numpy >=2.0.0
     - pandas >=2.2.2
     - scipy >=1.14.0
