@@ -4,3 +4,16 @@ github:
 conda_build:
   error_overlinking: true
 conda_forge_output_validation: true
+
+build_platform:
+  linux_64: linux_64
+  linux_ppc64le: linux_ppc64le
+  linux_aarch64: linux_aarch64
+  osx_64: osx_64
+  osx_arm64: osx_arm64
+  win_64: win_64
+
+provider:
+  linux_aarch64: default
+  linux_ppc64le: default
+  osx_arm64: default
