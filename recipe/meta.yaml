@@ -10,17 +10,18 @@ source:
   sha256: 546dd6928d37bd16a37a04af91417a5e09d720f5a3d585dea62499a607e4c700
 
 build:
+  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 2
-  skip: True  # [py<3.10]
+  skip: True
 
 requirements:
   host:
-    - python
-    - setuptools 
+    - python >=3.10,<3.13
+    - setuptools
     - pip
   run:
-    - python
+    - python >=3.10,<3.13
     - numpy >=2.0.0
     - pandas >=2.2.2
     - scipy >=1.14.0
