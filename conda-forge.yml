@@ -4,3 +4,12 @@ github:
 conda_build:
   error_overlinking: true
 conda_forge_output_validation: true
+
+# Support ARM builds on osx and linux
+provider:
+  linux_aarch64: default
+  osx_arm64: default
+
+build_platform:
+  osx_arm64: osx_arm64
+  linux_aarch64: linux_aarch64

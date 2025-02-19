@@ -1,6 +1,5 @@
 {% set name = "mhkit" %}
 {% set version = "0.9.0" %}
-{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -11,18 +10,21 @@ source:
   sha256: 546dd6928d37bd16a37a04af91417a5e09d720f5a3d585dea62499a607e4c700
 
 build:
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 2
-  skip: True
+  # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#preprocessing-selectors
+  skip: True  # [py<310 or py>313]
+  # Add these platform configurations
+  skip_compile_pyc:
+    - "*.py"    # [arm64]
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python
     - setuptools
     - pip
   run:
-    - python >={{ python_min }},<3.13
+    - python
     - numpy >=2.0.0
     - pandas >=2.2.2
     - scipy >=1.14.0
