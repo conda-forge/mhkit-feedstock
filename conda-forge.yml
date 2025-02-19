@@ -8,13 +8,6 @@ conda_forge_output_validation: true
 # Support ARM builds on osx and linux
 build_platform:
   linux_aarch64: linux_64
-  osx_arm64: osx_arm64
+  osx_arm64: osx_64
 
-provider:
-  linux_64: azure
-  linux_aarch64: None
-  osx_64: azure
-  osx_arm64: circle
-  win_64: azure
-
-test: native
+test: native_and_emulated
