@@ -11,13 +11,19 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
-  skip: True  # [py<3.10]
+  number: 3
+  # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#preprocessing-selectors
+  skip: True  # [py<310 or py>313]
 
 requirements:
+  # Necessary for osx_arm64 cross compilation
+  # https://conda-forge.org/blog/2020/10/29/macos-arm64/
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - python
-    - setuptools 
+    - setuptools
     - pip
   run:
     - python
