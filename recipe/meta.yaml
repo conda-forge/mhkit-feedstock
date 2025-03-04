@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 3
+  number: 4
   # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#preprocessing-selectors
   skip: True  # [py<310 or py>313]
 
@@ -64,3 +64,5 @@ about:
 extra:
   recipe-maintainers:
     - ssolson
+    - akeeste
+    - simmsa
