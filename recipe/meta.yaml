@@ -50,6 +50,7 @@ requirements:
     - fatpack
     - nrel-rex
     - cartopy
+    - pytz
 
 test:
   imports:
@@ -67,6 +68,5 @@ about:
 
 extra:
   recipe-maintainers:
-    - ssolson
     - akeeste
     - simmsa
