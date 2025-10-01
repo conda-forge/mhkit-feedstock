@@ -1,5 +1,5 @@
 {% set name = "mhkit" %}
-{% set version = "0.9.0" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
-  sha256: 546dd6928d37bd16a37a04af91417a5e09d720f5a3d585dea62499a607e4c700
+  sha256: 0f831698e9a9a813cfa4d9bdd8da951c9c7f20a4f6b0e4126fdeaa9ebf159d7a
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 4
+  number: 0
   # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#preprocessing-selectors
-  skip: True  # [py<310 or py>313]
+  skip: true  # [py<310 or py>312]
 
 requirements:
   # Necessary for osx_arm64 cross compilation
@@ -27,25 +27,30 @@ requirements:
     - pip
   run:
     - python
+    - pip
     - numpy >=2.0.0
     - pandas >=2.2.2
     - scipy >=1.14.0
     - xarray >=2024.6.0
-    - matplotlib-base >=3.9.1
     - scikit-learn >=1.5.1
     - h5py >=3.11.0
     - h5pyd >=0.18.0
-    - netcdf4 >=1.7.1.post1
+    - netCDF4 >=1.6.5
+    - hdf5 >=1.14.3,<1.14.5.0a0
     - statsmodels >=0.14.2
     - requests
-    - pecos >=0.3.0
-    - fatpack
-    - nrel-rex >=0.2.63
-    - pytz
     - beautifulsoup4
     - numexpr >=2.10.0
     - lxml
     - bottleneck
+    - pecos >=0.3.0
+    - notebook
+    # Recipes should usually depend on matplotlib-base as opposed to matplotlib so that runtime environments do not require large packages like qt
+    - matplotlib-base >=3.9.1
+    - fatpack
+    - nrel-rex
+    - cartopy
+    - pytz
 
 test:
   imports:
@@ -63,6 +68,5 @@ about:
 
 extra:
   recipe-maintainers:
-    - ssolson
     - akeeste
     - simmsa
