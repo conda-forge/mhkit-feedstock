@@ -10,8 +10,8 @@ source:
   sha256: 0f831698e9a9a813cfa4d9bdd8da951c9c7f20a4f6b0e4126fdeaa9ebf159d7a
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  script: {{ PYTHON }} -m pip install .[all] -vv --no-deps --no-build-isolation
+  number: 1
   # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#preprocessing-selectors
   skip: true  # [py<310 or py>312]
 
