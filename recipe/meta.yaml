@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install .[all] -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
   # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#preprocessing-selectors
   skip: true  # [py<310 or py>312]
 
