@@ -1,5 +1,5 @@
 {% set name = "mhkit" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
-  sha256: 0f831698e9a9a813cfa4d9bdd8da951c9c7f20a4f6b0e4126fdeaa9ebf159d7a
+  sha256: bb36f5a3d3706085c006ee4c6dfea870614493ae063e01e557a0e5811391a4c8
 
 build:
   script: {{ PYTHON }} -m pip install .[all] -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
   # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#preprocessing-selectors
   skip: true  # [py<310 or py>312]
 
