@@ -1,5 +1,5 @@
 {% set name = "mhkit" %}
-{% set version = "1.0.1" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
-  sha256: bb36f5a3d3706085c006ee4c6dfea870614493ae063e01e557a0e5811391a4c8
+  sha256: 5e32c3044f363e41bfbb8b09fbd3b8f5d932d64424875311e969b12cb7726574
 
 build:
   script: {{ PYTHON }} -m pip install .[all] -vv --no-deps --no-build-isolation
