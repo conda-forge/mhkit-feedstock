@@ -49,7 +49,6 @@ requirements:
     # Recipes should usually depend on matplotlib-base as opposed to matplotlib so that runtime environments do not require large packages like qt
     - matplotlib-base >=3.9.1
     - fatpack
-    - nrel-rex
     - cartopy
     - pytz
 
