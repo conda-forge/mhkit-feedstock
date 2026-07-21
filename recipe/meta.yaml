@@ -10,7 +10,12 @@ source:
   sha256: 5e32c3044f363e41bfbb8b09fbd3b8f5d932d64424875311e969b12cb7726574
 
 build:
-  script: {{ PYTHON }} -m pip install .[all] -vv --no-deps --no-build-isolation
+  # NLR-rex is not on conda-forge, so it is installed from PyPI at build time.
+  # This is a workaround pending https://github.com/NatLabRockies/rex issue to
+  # publish nlr-rex to conda-forge. See discussion in the recipe run: section.
+  script:
+    - {{ PYTHON }} -m pip install "NLR-rex[hsds]>=0.5.0" -vv
+    - {{ PYTHON }} -m pip install .[all] -vv --no-deps --no-build-isolation
   number: 0
   # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#preprocessing-selectors
   skip: true  # [py<310 or py>313]
