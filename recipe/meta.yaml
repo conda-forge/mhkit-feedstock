@@ -1,5 +1,5 @@
 {% set name = "mhkit" %}
-{% set version = "1.0.1" %}
+{% set version = "1.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mhkit-{{ version }}.tar.gz
-  sha256: bb36f5a3d3706085c006ee4c6dfea870614493ae063e01e557a0e5811391a4c8
+  sha256: 9ff2a2010ffea9b8b4eaa80be247d966aae35f0f24c1970c26b8fe9b50e090cb
 
 build:
   script: {{ PYTHON }} -m pip install .[all] -vv --no-deps --no-build-isolation
   number: 0
   # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#preprocessing-selectors
-  skip: true  # [py<310 or py>312]
+  skip: true  # [py<310 or py>313]
 
 requirements:
   # Necessary for osx_arm64 cross compilation
@@ -31,12 +31,13 @@ requirements:
     - numpy >=2.0.0
     - pandas >=2.2.2
     - scipy >=1.14.0
+    - pyarrow >=16.0.0
     - xarray >=2024.6.0
     - scikit-learn >=1.5.1
     - h5py >=3.11.0
     - h5pyd >=0.18.0
     - netCDF4 >=1.6.5
-    - hdf5 >=1.14.3,<1.14.5.0a0
+    - hdf5 >=1.14.3
     - statsmodels >=0.14.2
     - requests
     - beautifulsoup4
